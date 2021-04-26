@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Урок</title>
+    <meta charset="utf-8">
+    <meta data-n-head="true" name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/test1.css">
+</head>
+<body>
+<div class="header2">
+    <a href="/index">
+        <div><img class="center padding1" src="/static/svg/logo.svg"></div>
+    </a>
+    <a href="/index"><img class="center padding1" src="/static/svg/vector.svg"></a>
+    <a href="#"><img class="center padding1" src="/static/svg/vector1.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/change"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% else %}
+    <a href="/login"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% endif %}
+
+
+    <a href="#"><img class="center padding1" src="/static/svg/vector3.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/logout"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% else %}
+    <a href="#"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% endif %}
+</div>
+<!-- горизонтальб верткальная начало -->
+<div class="header">
+    <a href="/index">
+        <div><img class="center padding" src="/static/svg/logo.svg"></div>
+    </a>
+    <a href="/index"><img class="center padding" src="/static/svg/vector.svg"></a>
+    <a href="#"><img class="center padding" src="/static/svg/vector1.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/change"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% else %}
+    <a href="/login"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% endif %}
+
+    <a href="#"><img class="center padding" src="/static/svg/vector3.svg"></a>
+    {% if current_user.is_authenticated %}
+    <a href="/logout"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% else %}
+    <a href="#"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% endif %}
+</div>
+
+<!-- Конец шапки -->
+<div></div>
+<div class="all_width">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 none">
+            &nbsp
+        </div>
+
+        <!-- Над видосиком -->
+        <div class="col-md-7 col-lg-7 col-xs-12 center video column">
+            <div class="rowww">
+                <div class="tema column">
+                    <h4>1.1 Вводное занятие</h4>
+                    <div class="rowww">
+                        <div class="yes cube padding2"><img class="svg" src="/static/svg/image10.svg"></div>
+                        <div class="no cube padding2"><img class="svg" src="/static/svg/image11.svg"></div>
+                        <div class="no cube padding2"><img class="svg" src="/static/svg/image12.svg"></div>
+                        <div class="no cube padding2"><img class="svg" src="/static/svg/image13.svg"></div>
+                    </div>
+                </div>
+                <div class="ball column">
+                    <div class="rowww1 center"><h5>32 Балла </h5><img src="/static/svg/image15.svg"></div>
+                    <div><h6>Выполнено 10 из 23 шагов</h6></div>
+
+                </div>
+            </div>
+            <!-- видос -->
+            <iframe class="width100 hight" src="{{href_video}}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+            <!-- комментарии -->
+            <div class="width100 video padding gray"><h3>Комментарии</h3>
+
+                <form class="width100" action="" method="post" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    {% if current_user.is_authenticated %}
+                    <div class="width100 rowww2">{{form.comment_zone(class="form-control marginr")}}
+                        {{form.submit(type="submit", class="btn modul btn-dark")}}
+                    </div>
+
+                    {%endif%}
+
+                </form>
+                {%for comment in comments%}
+                <div class="comment">
+                    <h6 class="avtor_comment">{{comment.user.name}}</h6>
+                    <p class="width100 comment_content">{{comment.comment}}</p>
+                </div>
+                {%endfor%}
+
+            </div>
+        </div>
+
+        <!-- навигация -->
+
+        <div class="col-lg-3 col-md-3 course_navigation ">
+            <div class="course_block">
+                <div class="course_name center"><h2 class="w">{{title_lesson}}</h2></div>
+            </div>
+            <div class="lesons">
+                <div class="lesons1">
+                    <div class="modul">Модуль 1 - Грамматика</div>
+                    <a href="#" class="leson"><h6 class="w">1.1 Вводное занятие</h6></a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">1.2 Знакомство с словарем</h6></a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">1.3 Закрепление знаний</h6></a>
+                </div>
+
+
+                <div class="lesons2">
+                    <div class="modul">Модуль 2 - Речь</div>
+                    <a href="#" class="leson"><h6 class="w">2.1 Вводное занятие</h6></a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">2.3 Знакомство с особенностями разговорного языка</h6>
+                    </a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">2.3 Повторение</h6></a>
+                </div>
+
+
+                <div class="lesons2">
+                    <div class="modul">Модуль 3 - Тесты</div>
+                    <a href="#" class="leson"><h6 class="w">3.1 Тест 1</h6></a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">3.2 Тест 2</h6></a>
+                    <hr class="hr_navigation"/>
+                    <a href="#" class="leson"><h6 class="w">3.3 Тест 3</h6></a>
+                </div>
+            </div>
+        </div>
+        <!-- конец навигации -->
+    </div>
+</div>
+</body>
+</html>

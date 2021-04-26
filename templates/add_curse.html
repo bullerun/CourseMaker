@@ -1,0 +1,37 @@
+{% extends "shablon_profile.html" %}
+{% block content %}
+<h1>Добавление Урока</h1>
+{{ form_href.hidden_tag() }}
+<p>
+    {{ form_href.title.label }}<br>
+    {{ form_href.title(class="form-control") }}<br>
+    {% for error in form_href.title.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+    {% endfor %}
+</p>
+<p>
+    {{ form_href.video.label }}<br>
+    {{ form_href.video(class="form-control") }}<br>
+    {% for error in form_href.video.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+    {% endfor %}
+</p>
+
+<div class="mb-3">
+    {{ form_href.file(class="form-control", accept="image/*", id="file") }}
+
+    <div class="invalid-feedback">Выберите Фотографию</div>
+</div>
+<div class="rower">
+
+    <p>{{ form_href.submit(type="submit", class="btn btn-dark") }}</p>
+    <div class="container-login100-form-btn">
+        <a href="/index" class="btn btn-dark">Назад</a>
+    </div>
+</div>
+{{message}}
+{% endblock %}

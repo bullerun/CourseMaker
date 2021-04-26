@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Сайт курсов</title>
+
+    <meta data-n-head="true" name="viewport" content="width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/online_course.css">
+</head>
+<body>
+<!-- горизонтальная шапка -->
+<div class="header2"><a href="#">
+    <div><img class="center padding1" src="/static/svg/logo.svg"></div>
+</a>
+    <a href="#"><img class="center padding1" src="/static/svg/vector.svg"></a>
+    <a href="#"><img class="center padding1" src="/static/svg/vector1.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/change"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% else %}
+    <a href="/login"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% endif %}
+
+    <a href="#"><img class="center padding1" src="/static/svg/vector3.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/logout"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% else %}
+    <a href=""><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% endif %}
+</div>
+<!-- горизонтальб верткальная начало -->
+<div class="header">
+    <a href="#">
+        <div><img class="center padding" src="/static/svg/logo.svg"></div>
+    </a>
+    <a href="#"><img class="center padding" src="/static/svg/vector.svg"></a>
+    <a href="#"><img class="center padding" src="/static/svg/vector1.svg"></a>
+    {% if current_user.is_authenticated %}
+    <a href="/change"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% else %}
+    <a href="/login"><img class="center padding1" src="/static/svg/vector2.svg"></a>
+    {% endif %}
+    <a href="#"><img class="center padding" src="/static/svg/vector3.svg"></a>
+
+    {% if current_user.is_authenticated %}
+    <a href="/logout"><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% else %}
+    <a href=""><img class="end padding" src="/static/svg/vector4.svg"></a>
+    {% endif %}
+</div>
+<!-- конец шапки -->
+<!-- начало контента -->
+<div class="all_width">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+            &nbsp
+        </div>
+
+
+        <div class="col-md-6 col-lg-6 col-xs-12">
+            <div class="men">
+                <div class="hello">
+                    {%if current_user.is_authenticated %}
+                    <h4>Приветствую, {{ current_user.name }}!<br/> Рады вас снова видеть!</h4>
+                    {%else%}
+                    <h4>Приветствую!<br/>Зарегистрируйтесь здесь <img src="/static/svg/vector2.svg"> чтобы увидеть всю
+                        информацию</h4>
+                    {%endif%}
+                </div>
+                <div class=""><img class="ill" src="/static/svg/illustration.svg"></div>
+            </div>
+
+            <!--            <div class="my_course">-->
+            <!--                <div class="cube center">-->
+            <!--                    <img src="/static/svg/group23.svg"/>-->
+            <!--                </div>-->
+            <!--                <p class="font_width center">Разговорный</p>-->
+            <!--                <img src="/static/svg/group68.svg">-->
+            <!--                <a href="/course/{{current_user.last_lesson_attended}}" class="black_button center">-->
+            <!--                    <p>Продолжить</p>-->
+            <!--                </a>-->
+            <!--            </div>-->
+            {% for lesson in item if current_user.last_lesson_attended == lesson.id%}
+            <div class="my_course">
+                <div class="cube center">
+                    <img class="cube" src="{{lesson.file}}"/>
+                </div>
+                <p class="font_width">{{lesson.title}}</p>
+                <a href="/course/{{current_user.last_lesson_attended}}" class="black_button center">
+                    <p>Продолжить</p>
+                </a>
+            </div>
+            {%endfor%}
+            <div class="leson padding">
+                <h2>Уроки</h2>
+            </div>
+
+            <div class="navigat float_left">
+                <a href="/index" class="{{data.all}}">Все Уроки</a>
+                <a href="/index/date" class="{{data.date}}">Новые уроки</a>
+
+                <a href="/index/comm" class="{{data.comm}}">По популярности</a>
+            </div>
+            {% if current_user.is_authenticated and current_user.id == 1%}
+            <div class="navigat float_left width100">
+                <a href="/add_course" class="btn black_button width100">Добавить урок</a>
+            </div>
+            {% endif %}
+            <!--            <div class="lesons">-->
+            <!--                <div class="cube center">-->
+            <!--                    <img src="/static/svg/book1.svg"/>-->
+            <!--                </div>-->
+            <!--                <p class="font_width">Известные произведения</p>-->
+            <!--                <a href="course.html" class="start center">-->
+            <!--                    <p>Посмотреть урок</p>-->
+            <!--                </a>-->
+            <!--            </div>-->
+            {% for lesson in item %}
+            <div class="lesons">
+                <div class="cube center">
+                    <img class="cube" src="{{lesson.file}}"/>
+                </div>
+                <p class="font_width">{{lesson.title}}</p>
+                <a href="/course/{{lesson.id}}" class="start center">
+                    <p>Посмотреть урок</p>
+                </a>
+                {% if current_user.is_authenticated and current_user.id == 1 %}
+                <div class="dropdown">
+                    <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="size70" src="/static/svg/three-dots-vertical.svg">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="/add_course/{{lesson.id}}">Изменить</a></li>
+                        <li><a class="dropdown-item" href="/course_delete/{{lesson.id}}">Удалить</a></li>
+
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {%endfor%}
+
+
+            <!--				<div class="lesons">-->
+            <!--					<div class="cube center">-->
+            <!--						<img src="/static/svg/speechbubble1.svg" />-->
+            <!--					</div>-->
+            <!--					<p class="font_width">Разговорный</p>-->
+            <!--					<a href="#" class="start center">-->
+            <!--						<p>Посмотреть урок</p>-->
+            <!--					</a>-->
+            <!--				</div>-->
+            <!--				<div class="lesons">-->
+
+
+            <!--					<div class="cube center">-->
+            <!--						<img src="/static/svg/feedback1.svg" />-->
+            <!--					</div>-->
+            <!--					<p class="font_width">Поведение в гос. учер. </p>-->
+            <!--					<a href="#" class="start center">-->
+            <!--						<p>Посмотреть урок</p>-->
+            <!--					</a>-->
+            <!--				</div>-->
+
+
+            <!--				<div class="lesons">-->
+            <!--					<div class="cube center">-->
+            <!--						<img src="/static/svg/abc1.svg" />-->
+            <!--					</div>-->
+            <!--					<p class="font_width">Орфография  Б1</p>-->
+            <!--					<a href="#" class="start center">-->
+            <!--						<p>Посмотреть урок</p>-->
+            <!--					</a>-->
+            <!--				</div>-->
+
+
+            <!--				<div class="lesons">-->
+            <!--					<div class="cube center">-->
+            <!--						<img src="/static/svg/test1.svg" />-->
+            <!--					</div>-->
+            <!--					<p class="font_width">Pазбор экзамена 2</p>-->
+            <!--					<a href="" class="start center">-->
+            <!--						<p>Посмотреть урок</p>-->
+            <!--					</a>-->
+            <!--                </div>-->
+
+        </div>
+        <div class="col-md-4 col-lg-4 col-xs-12">
+            <div class="complete">
+                <div class="ter center culmn">
+                    <h1>11</h1>
+                    <h6 class="center wi">УРОКОВ  ПРОЙДЕНО</h6>
+                </div>
+                <div class="ter center culmn">
+                    <h1>4</h1>
+                    <h6 class="center wi">УРОКА В ПРОЦЕССЕ</h6>
+                </div>
+            </div>
+
+            <h1 class="leson">Ваша статистика</h1>
+            <div class="navigat float_left">
+                <p class="font_width1">Часы обучения</p>
+                <p>Мои уроки</p>
+            </div>
+            <img src="/static/svg/group61.svg" class="width_100">
+            {% if not current_user.is_authenticated%}
+            <div class="price">
+                <div>
+                    <div class="culmn">
+                        <h3 class="center">Изучайте больше!</h3>
+                        <p class="left">Откройте больше уроков всего за 800 рублей в неделю</p></div>
+                </div>
+                <div class="right">
+                    <img src="/static/svg/group48.svg">
+                </div>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+<!-- конец контента -->
+</body>
+</html>

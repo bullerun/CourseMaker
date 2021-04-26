@@ -1,0 +1,97 @@
+{
+    "response": {
+        "GeoObjectCollection": {
+            "metaDataProperty": {
+                "GeocoderResponseMetaData": {
+                    "request": "\u041a\u0430\u0437\u0430\u043d\u044c,\u0413\u043b\u0443\u0448\u043a\u043e,20",
+                    "results": "10",
+                    "found": "1"
+                }
+            },
+            "featureMember": [
+                {
+                    "GeoObject": {
+                        "metaDataProperty": {
+                            "GeocoderMetaData": {
+                                "precision": "exact",
+                                "text": "Russia, Republic of Tatarstan, City of Kazan, Akademika Glushko Street, 20",
+                                "kind": "house",
+                                "Address": {
+                                    "country_code": "RU",
+                                    "formatted": "Russia, Republic of Tatarstan, City of Kazan, Akademika Glushko Street, 20",
+                                    "postal_code": "420100",
+                                    "Components": [
+                                        {
+                                            "kind": "country",
+                                            "name": "Russia"
+                                        },
+                                        {
+                                            "kind": "province",
+                                            "name": "Privolzhskiy federalny okrug"
+                                        },
+                                        {
+                                            "kind": "province",
+                                            "name": "Republic of Tatarstan"
+                                        },
+                                        {
+                                            "kind": "area",
+                                            "name": "Kazan Urban District"
+                                        },
+                                        {
+                                            "kind": "locality",
+                                            "name": "City of Kazan"
+                                        },
+                                        {
+                                            "kind": "street",
+                                            "name": "Akademika Glushko Street"
+                                        },
+                                        {
+                                            "kind": "house",
+                                            "name": "20"
+                                        }
+                                    ]
+                                },
+                                "AddressDetails": {
+                                    "Country": {
+                                        "AddressLine": "Russia, Republic of Tatarstan, City of Kazan, Akademika Glushko Street, 20",
+                                        "CountryNameCode": "RU",
+                                        "CountryName": "Russia",
+                                        "AdministrativeArea": {
+                                            "AdministrativeAreaName": "Republic of Tatarstan",
+                                            "SubAdministrativeArea": {
+                                                "SubAdministrativeAreaName": "Kazan Urban District",
+                                                "Locality": {
+                                                    "LocalityName": "City of Kazan",
+                                                    "Thoroughfare": {
+                                                        "ThoroughfareName": "Akademika Glushko Street",
+                                                        "Premise": {
+                                                            "PremiseNumber": "20",
+                                                            "PostalCode": {
+                                                                "PostalCodeNumber": "420100"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "name": "Akademika Glushko Street, 20",
+                        "description": "City of Kazan, Republic of Tatarstan, Russia",
+                        "boundedBy": {
+                            "Envelope": {
+                                "lowerCorner": "49.229582 55.782881",
+                                "upperCorner": "49.237793 55.787508"
+                            }
+                        },
+                        "Point": {
+                            "pos": "49.233687 55.785194"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

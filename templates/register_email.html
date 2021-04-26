@@ -1,0 +1,21 @@
+{% extends "shablon_profile.html" %}
+{% block content %}
+<h1>Введите сообщение присланое на почту</h1>
+
+<div class="wrap-input100 validate-input m-b-18">
+    <label for="validationTextarea" class="form-label">{{ form.email_confirmation.label }}</label>
+    {{ form.email_confirmation(class="form-control" ) }}
+</div>
+<div class="margin_top20">
+<div class="rower">
+    <div class="container-login100-form-btn">
+        {{ form.hidden_tag() }}
+        {{ form.submit(type="submit", class="btn btn-dark")}}
+    </div>
+    <div class="container-login100-form-btn1">
+        <a href="/register" class="btn btn-dark">Назад</a>
+    </div>
+</div>
+</div>
+{{ message }}
+{% endblock %}

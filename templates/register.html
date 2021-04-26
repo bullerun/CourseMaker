@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Регистрация</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main1.css">
+<!--===============================================================================================-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/static/svg/reg.png);">
+					<span class="login100-form-title-1">
+						Регистрация
+					</span>
+				</div>
+
+				<form method = "POST" class="login100-form validate-form">
+
+					<div class="wrap-input100 validate-input m-b-18">
+						<span class="label-input100">{{ form.name.label }}</span>
+						{{ form.name(class="input100", type="text") }}
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-26">
+						<span class="label-input100">{{ form.email.label }}</span>
+						{{ form.email(class="input100", type="email") }}
+						<span class="focus-input100"></span>
+					</div>
+
+
+
+					<div class="wrap-input100 validate-input m-b-18">
+						<span class="label-input100">{{ form.password.label }}</span>
+						{{ form.password(class="input100", type="password") }}
+						<span class="focus-input100"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-18">
+						<span class="label-input100">{{ form.password_again.label }}</span>
+						{{ form.password_again(class="input100", type="password") }}
+						<span class="focus-input100"></span>
+					</div>
+
+                    <div class="rower" >
+                        <div class="container-login100-form-btn">
+                            <a href="/login" class="login100-form-btn">Войти</a>
+                        </div>
+
+                        <div class="container-login100-form-btn1">
+                             {{ form.hidden_tag() }}
+
+                        {{ form.submit(type="submit", class="login100-form-btn")}}
+                        </div>
+
+                    </div>
+                   {{ message }}
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="/static/js/main.js"></script>
+
+</body>
+</html>

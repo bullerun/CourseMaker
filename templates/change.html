@@ -1,0 +1,30 @@
+{% extends "shablon_profile.html" %}
+{% block content %}
+<h1>Изменить профиль</h1>
+<div class="wrap-input100 validate-input m-b-18">
+    <label class="form-label">{{ form.name.label }}</label>
+    {{ form.name(class="form-control", type="text") }}
+</div>
+
+<div class="wrap-input100 validate-input m-b-26">
+    <label class="form-label">{{ form.email.label }}</label>
+    {{ form.email(class="form-control", type="email", readonly="readonly") }}
+    <span class="focus-input100"></span>
+</div>
+<div class="mb-3">
+    <label class="form-label">{{ form.about.label }}</label>
+    {{ form.about(class="form-control", id="validationTextarea", placeholder="Обязательный пример текстового поля")
+    }}
+</div>
+<div class="rower">
+    <div>
+        {{ form.hidden_tag() }}
+        {{ form.submit(type="submit", class="btn btn-dark")}}
+    </div>
+    <div class="container-login100-form-btn">
+        <a href="/index" class="btn btn-dark">Назад</a>
+    </div>
+
+</div>
+{{ message }}
+{% endblock %}

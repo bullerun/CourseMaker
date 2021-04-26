@@ -1,0 +1,11 @@
+python-dotenv
+flask~=1.1.2
+flask_login
+flask-wtf
+flask-Mail
+sqlalchemy~=1.4.11
+Flask-RESTful
+Flask-SQLAlchemy
+Flask-WTF
+Werkzeug~=1.0.1
+WTForms~=2.3.3
